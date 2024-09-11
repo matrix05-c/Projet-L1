@@ -32,8 +32,8 @@ Ce projet permet de gérer les réservations de véhicules en utilisant Qt pour 
 
 1. **Cloner le dépôt GitHub :**
     ```bash
-   git clone https://github.com/votre-utilisateur/gestion-reservation-vehicule.git
-   cd gestion-reservation-vehicule
+   git clone https://github.com/DinaTolotra/ProjetL1.git
+   cd ProjetL1
    ```
 
 2. **Initialiser la base de donnée :**
