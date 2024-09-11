@@ -27,32 +27,32 @@ class Reservation
 {
 public:
     /**
-     * @brief Default constructor
+     * @brief Constructeur par defaut
      */
     Reservation();
     /**
      * @brief Surcharge du constructeur
-     * @param num: the id of the reservation
+     * @param num: Identifiant du reservation
      */
     Reservation(qint32 num);
     /**
      * @brief Surcharge du constructeur
      * @param num: le clé primaire du reservation
-     * @param client: pointeur vers le client qui a fait la réservation
-     * @param vehicule: pointeur vers le véhicule resérver
-     * @param dateDepart: pointeur vers le conlendrier de départ
+     * @param client: Identifiant du client qui a fait la réservation
+     * @param vehicule: Identifiant du véhicule resérver
+     * @param dateDepart: Date de départ
      */
-    Reservation(qint32 num, Client *client, Vehicule *vehicule, Calendrier *dateDepart);
+    Reservation(qint32 num, qint32 numCli, qint32 numVeh, QDate dateDep);
 
     /**
      * @brief fonction static pour l'éxtraction des données à partir du query du DB
      * @param query: le QSqlQuery issue du DB où on stock les données
      * @return un instance de l'object de type Client créer
      */
-    static Client createFromQuery(QSqlQuery &query);
+    static Reservation createFromQuery(QSqlQuery &query);
 
     // Getter
-    qint32 getNumRes() const;
+    qint32 getNum() const;
     qint32 getNumClient() const;
     qint32 getNumVehicule() const;
     QDate getDateDep() const;
@@ -60,7 +60,7 @@ public:
     qint32 getNbPers() const;
 
     // Setter
-    void setNumRes(qint32 numRes);
+    void setNum(qint32 num);
     void setDateRes(const QDate &dateRes);
     void setNbPers(qint32 nbPers);
     void setNumClient(qint32 numClient);
@@ -68,7 +68,7 @@ public:
     void setDateDep(const QDate &dateDep);
 
 private:
-    qint32 _numRes;
+    qint32 _num;
     qint32 _numClient;
     qint32 _numVehicule;
     QDate _dateDep;

@@ -1,11 +1,30 @@
 #include "Reservation.hpp"
 
-Reservation::Reservation() {}
+Reservation::Reservation()
+    : _num(0)
+    , _numClient(0)
+    , _numVehicule(0)
+    , _dateDep(QDate::fromString("010101", "ddmmyy"))
+{}
 
-Client Reservation::createFromQuery(QSqlQuery &query)
+Reservation::Reservation(qint32 num)
+    : _num(num)
+    , _numClient(0)
+    , _numVehicule(0)
+    , _dateDep(QDate::fromString("010101", "ddmmyy"))
+{}
+
+Reservation::Reservation(qint32 num, qint32 numCli, qint32 numVeh, QDate dateDep)
+    : _num(num)
+    , _numClient(numCli)
+    , _numVehicule(numVeh)
+    , _dateDep(dateDep)
+{}
+
+Reservation Reservation::createFromQuery(QSqlQuery &query)
 {
     Reservation res;
-    res.setNumRes(query.value("NUMRESERVATION").toInt());
+    res.setNum(query.value("NUMRESERVATION").toInt());
     res.setNumClient(query.value("NUMCLIENT").toInt());
     res.setNumVehicule(query.value("NUMVEHICULE").toInt());
     res.setDateDep(query.value("DATEDEPART").toDate());
@@ -15,14 +34,14 @@ Client Reservation::createFromQuery(QSqlQuery &query)
     return res;
 }
 
-qint32 Reservation::getNumRes() const
+qint32 Reservation::getNum() const
 {
-    return _numRes;
+    return _num;
 }
 
-void Reservation::setNumRes(qint32 numRes)
+void Reservation::setNum(qint32 num)
 {
-    _numRes = numRes;
+    _num = num;
 }
 
 QDate Reservation::getDateRes() const

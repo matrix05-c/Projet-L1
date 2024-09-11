@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     Calendrier.cpp \
     Client.cpp \
+    Database.cpp \
     Reservation.cpp \
     Vehicule.cpp \
     main.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     Calendrier.hpp \
     Client.hpp \
+    Database.hpp \
     Reservation.hpp \
     Vehicule.hpp \
     Window.hpp

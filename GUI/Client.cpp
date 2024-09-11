@@ -1,6 +1,8 @@
 #include "Client.hpp"
 
-Client::Client() {}
+Client::Client()
+    : _num(0)
+{}
 
 Client::Client(qint32 num)
     : _num(num)
@@ -14,10 +16,10 @@ Client::Client(qint32 num, QString nom)
 Client Client::createFromQuery(QSqlQuery &query)
 {
     Client client;
-    client.setNum(query.value("NUMCLIENT").toInt();
-    client.setNom(query.value("NOM").toString();
-    client.setAdresse(query.value("ADRESSE").toString();
-    client.setTelephone(query.value("TELEPHONE").toString();
+    client.setNum(query.value("NUMCLIENT").toInt());
+    client.setNom(query.value("NOM").toString());
+    client.setAdresse(query.value("ADRESSE").toString());
+    client.setTelephone(query.value("TELEPHONE").toString());
 
     return client;
 }

@@ -1,6 +1,8 @@
 #include "Calendrier.hpp"
 
-Calendrier::Calendrier() {}
+Calendrier::Calendrier()
+    : _dateDep(QDate::fromString("010101", "ddmmyy"))
+{}
 
 Calendrier::Calendrier(QDate dateDepart)
     : _dateDep(dateDepart)

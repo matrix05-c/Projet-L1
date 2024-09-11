@@ -1,6 +1,8 @@
 #include "Vehicule.hpp"
 
-Vehicule::Vehicule() {}
+Vehicule::Vehicule()
+    : _num(0)
+{}
 
 Vehicule::Vehicule(qint32 num)
     : _num(num)
