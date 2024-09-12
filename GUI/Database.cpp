@@ -1,9 +1,14 @@
 #include "Database.hpp"
 
-Database::Database() {}
+Database::Database()
+    : _db(nullptr)
+    , _query(nullptr)
+{}
 
 bool Database::setupConnection()
 {
+    if (_db) return false;
+
     _db = new QSqlDatabase();
     *_db = QSqlDatabase::addDatabase("QMYSQL");
     _db->setDatabaseName("reservation");
@@ -13,6 +18,7 @@ bool Database::setupConnection()
 
 void Database::setupQuery()
 {
+    if (_query) return;
     _query = new QSqlQuery(*_db);
 }
 
@@ -38,9 +44,9 @@ QMap<qint32, Vehicule> Database::getVehiculeList()
     _query->prepare("SELECT * FROM VEHICULE");
 
     while (_query->next()) {
-        Vehicule tempRes =
+        Vehicule tempVeh =
             Vehicule::createFromQuery(*_query);
-        vehiculeList[tempRes.getNum()] = tempRes;
+        vehiculeList[tempVeh.getNum()] = tempVeh;
     }
 
     return vehiculeList;
@@ -107,7 +113,7 @@ bool Database::addCalendrier(Calendrier calendrier)
 
 bool Database::addReservation(Reservation reservation)
 {
-    _query->prepare("INSERT INTO VEHICULE VALUE (?, ?, ?, ?, ?, ?)");
+    _query->prepare("INSERT INTO RESERVATION VALUE (?, ?, ?, ?, ?, ?)");
     _query->addBindValue(reservation.getNum());
     _query->addBindValue(reservation.getNumClient());
     _query->addBindValue(reservation.getNumVehicule());

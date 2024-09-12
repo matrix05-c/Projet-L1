@@ -34,7 +34,6 @@ public:
     bool addCalendrier(Calendrier calendrier);
     bool addReservation(Reservation reservation);
 
-private:
     bool setupConnection();
     void setupQuery();
 
