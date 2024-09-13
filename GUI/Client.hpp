@@ -1,10 +1,3 @@
-/**
- * @file Client.cpp
- * @brief Ce fichier contient l'impémentation du table CLIENT.
- * @date September 10, 2024
- */
-
-
 #ifndef CLIENT_HPP
 #define CLIENT_HPP
 
@@ -16,6 +9,10 @@
 // Database library
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
+
+enum Sexe {
+    HOMME, FEMME
+};
 
 
 class Client
@@ -47,18 +44,23 @@ public:
     // Getter
     qint32 getNum() const;
     QString getNom() const;
+    Sexe getSexe() const;
+    QChar getCharSexe() const;
     QString getAdresse() const;
     QString getTelephone() const;
 
     // Setter
     void setNum(qint32 num);
     void setNom(const QString &nom);
+    void setSexe(const Sexe sexe);
     void setAdresse(const QString &adresse);
     void setTelephone(const QString &telephone);
+
 
 private:
     qint32 _num;
     QString _nom;
+    Sexe _sexe;
     QString _adresse;
     QString _telephone;
 

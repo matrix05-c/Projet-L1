@@ -16,9 +16,9 @@ Vehicule::Vehicule(qint32 num, qint32 nbPlace)
 Vehicule Vehicule::createFromQuery(QSqlQuery &query)
 {
     Vehicule veh;
-    veh.setNum(query.value("NOMBREPLACES").toInt());
-    veh.setNbPlace(query.value("NOMBREPLACES").toInt());
-    veh.setNbPlaceDispo(query.value("NOMBREPLACESDISPO").toInt());
+    veh.setNum(query.value("NUMVEH").toInt());
+    veh.setNbPlace(query.value("NBPLACE").toInt());
+    veh.setNbPlaceDispo(query.value("NBPLACEDISPO").toInt());
 
     return veh;
 }

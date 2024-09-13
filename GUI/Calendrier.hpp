@@ -1,10 +1,3 @@
-/**
- * @file Calendrier.cpp
- * @brief Ce fichier contient l'implémentation du table CALENDRIER.
- * @date September 10, 2024
- */
-
-
 #ifndef CALENDRIER_HPP
 #define CALENDRIER_HPP
 

@@ -84,9 +84,10 @@ QMap<qint32, Reservation> Database::getReservationList()
 
 bool Database::addClient(Client client)
 {
-    _query->prepare("INSERT INTO CLIENT VALUE (?, ?, ?, ?)");
+    _query->prepare("INSERT INTO CLIENT VALUE (?, ?, ?, ?, ?)");
     _query->addBindValue(client.getNum());
     _query->addBindValue(client.getNom());
+    _query->addBindValue(client.getCharSexe());
     _query->addBindValue(client.getAdresse());
     _query->addBindValue(client.getTelephone());
 
@@ -115,10 +116,13 @@ bool Database::addReservation(Reservation reservation)
 {
     _query->prepare("INSERT INTO RESERVATION VALUE (?, ?, ?, ?, ?, ?)");
     _query->addBindValue(reservation.getNum());
+    _query->addBindValue(reservation.getNumVeh());
     _query->addBindValue(reservation.getNumClient());
-    _query->addBindValue(reservation.getNumVehicule());
     _query->addBindValue(reservation.getDateDep());
     _query->addBindValue(reservation.getDateRes());
+    _query->addBindValue(reservation.getFraisTotal());
+    _query->addBindValue(reservation.getAvance());
+    _query->addBindValue(reservation.getNumPlace());
 
     return _query->exec();
 }

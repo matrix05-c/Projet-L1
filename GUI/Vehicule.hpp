@@ -1,10 +1,3 @@
-/**
- * @file Vehicule.cpp
- * @brief Ce fichier contient l'implémentation du table VEHICULE.
- * @date September 10, 2024
- */
-
-
 #ifndef VEHICULE_HPP
 #define VEHICULE_HPP
 

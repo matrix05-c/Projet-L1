@@ -16,10 +16,14 @@ Client::Client(qint32 num, QString nom)
 Client Client::createFromQuery(QSqlQuery &query)
 {
     Client client;
-    client.setNum(query.value("NUMCLIENT").toInt());
+    client.setNum(query.value("NUMCLI").toInt());
     client.setNom(query.value("NOM").toString());
     client.setAdresse(query.value("ADRESSE").toString());
-    client.setTelephone(query.value("TELEPHONE").toString());
+    client.setTelephone(query.value("TEL").toString());
+    QChar sexe = query.value("SEXE").toChar();
+
+    if (sexe == 'F') client.setSexe(FEMME);
+    else client.setSexe(HOMME);
 
     return client;
 }
@@ -62,4 +66,20 @@ QString Client::getTelephone() const
 void Client::setTelephone(const QString &telephone)
 {
     _telephone = telephone;
+}
+
+Sexe Client::getSexe() const
+{
+    return _sexe;
+}
+
+QChar Client::getCharSexe() const
+{
+    if (_sexe == HOMME) return 'H';
+    else return 'F';
+}
+
+void Client::setSexe(const Sexe sexe)
+{
+    _sexe = sexe;
 }

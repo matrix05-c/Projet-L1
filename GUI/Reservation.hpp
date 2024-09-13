@@ -1,10 +1,3 @@
-/**
- * @file Reservation.cpp
- * @brief Ce fichier contient l'implémentation du table RESERVATION.
- * @date September 10, 2024
- */
-
-
 #ifndef RESERVATION_HPP
 #define RESERVATION_HPP
 
@@ -38,8 +31,8 @@ public:
     /**
      * @brief Surcharge du constructeur
      * @param num: le clé primaire du reservation
-     * @param client: Identifiant du client qui a fait la réservation
-     * @param vehicule: Identifiant du véhicule resérver
+     * @param numCli: Identifiant du client qui a fait la réservation
+     * @param numVeh: Identifiant du vehicule reserver
      * @param dateDepart: Date de départ
      */
     Reservation(qint32 num, qint32 numCli, qint32 numVeh, QDate dateDep);
@@ -54,26 +47,33 @@ public:
     // Getter
     qint32 getNum() const;
     qint32 getNumClient() const;
-    qint32 getNumVehicule() const;
+    qint32 getNumVeh() const;
     QDate getDateDep() const;
     QDate getDateRes() const;
-    qint32 getNbPers() const;
+    qint32 getNumPlace() const;
+    float getFraisTotal() const;
+    float getAvance() const;
 
     // Setter
     void setNum(qint32 num);
     void setDateRes(const QDate &dateRes);
-    void setNbPers(qint32 nbPers);
     void setNumClient(qint32 numClient);
-    void setNumVehicule(qint32 numVehicule);
+    void setNumVeh(qint32 numVeh);
     void setDateDep(const QDate &dateDep);
+    void setNumPlace(qint32 NumPlace);
+    void setFraisTotal(float fraisTotal);
+    void setAvance(float avance);
+
 
 private:
     qint32 _num;
     qint32 _numClient;
-    qint32 _numVehicule;
+    qint32 _numVeh;
     QDate _dateDep;
     QDate _dateRes;
-    qint32 _nbPers;
+    qint32 _numPlace;
+    float _fraisTotal;
+    float _avance;
 
 };
 
