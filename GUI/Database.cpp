@@ -11,7 +11,7 @@ bool Database::setupConnection()
 
     _db = new QSqlDatabase();
     *_db = QSqlDatabase::addDatabase("QMYSQL");
-    _db->setDatabaseName("reservation");
+    _db->setDatabaseName("projet_fin_annee");
     _db->setHostName("localhost");
     return _db->open("root", "root");
 }
@@ -20,6 +20,18 @@ void Database::setupQuery()
 {
     if (_query) return;
     _query = new QSqlQuery(*_db);
+}
+
+void Database::disconnect()
+{
+    if (_query != nullptr) {
+        _query->clear();
+        delete _query;
+    }
+    if (_db != nullptr) {
+        _db->close();
+        delete _db;
+    }
 }
 
 QMap<qint32, Client> Database::getClientList()

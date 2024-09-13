@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 
+#include "Database.hpp"
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Window;
@@ -16,6 +19,9 @@ class Window : public QMainWindow
 public:
     Window(QWidget *parent = nullptr);
     ~Window();
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::Window *ui;

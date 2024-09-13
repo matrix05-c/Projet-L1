@@ -37,6 +37,8 @@ public:
     bool setupConnection();
     void setupQuery();
 
+    void disconnect();
+
 private:
     QSqlDatabase *_db;
     QSqlQuery *_query;
